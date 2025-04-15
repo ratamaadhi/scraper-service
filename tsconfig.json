@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "esnext",
+    "esModuleInterop": true,
+    "strict": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
-  },
+  }
 }

@@ -2,7 +2,8 @@
   "functions": {
     "api/meta.ts": {
       "memory": 1024,
-      "maxDuration": 20
+      "maxDuration": 20,
+      "runtime": "@vercel/node"
     }
   },
   "build": {
