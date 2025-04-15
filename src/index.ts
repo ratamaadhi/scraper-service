@@ -23,6 +23,17 @@ const CACHE_TTL = 60 * 10; // 10 minutes
 
 const app = new Hono();
 
+app.use('*', async (c, next) => {
+  await next()
+  c.header('Access-Control-Allow-Origin', '*')
+  c.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+  c.header('Access-Control-Allow-Headers', 'Content-Type')
+})
+
+app.options('*', (c) => {
+  return c.body(null, 204)
+})
+
 app.get("/", (c) => {
   return c.text("Scraper service is running!");
 });
