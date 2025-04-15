@@ -3,7 +3,7 @@
     "api/meta.ts": {
       "memory": 1024,
       "maxDuration": 20,
-      "runtime": "@vercel/node@4"
+      "runtime": "vercel-node@4.0.0"
     }
   },
   "build": {
