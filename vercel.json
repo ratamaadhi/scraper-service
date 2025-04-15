@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/meta.ts": {
+      "memory": 1024,
+      "maxDuration": 20
+    }
+  },
+  "build": {
+    "env": {
+      "PLAYWRIGHT_BROWSERS_PATH": "0"
+    }
+  }
+}

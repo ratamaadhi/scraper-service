@@ -3,10 +3,12 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch index.ts",
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "playwright install chromium"
   },
   "dependencies": {
     "@hono/node-server": "^1.14.1",
+    "@vercel/node": "^5.1.14",
     "hono": "^4.7.6",
     "ioredis": "^5.6.1",
     "metascraper": "^5.46.11",

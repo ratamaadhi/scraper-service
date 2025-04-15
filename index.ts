@@ -1,22 +1,23 @@
 import { Hono } from "hono";
+import { handle } from "hono/vercel";
 import { serve } from "@hono/node-server";
 import { chromium } from "playwright";
 import { redis } from "@/lib/redis";
 
-import metascraper from 'metascraper'
-import metascraperDescription from 'metascraper-description'
-import metascraperImage from 'metascraper-image'
-import metascraperLogo from 'metascraper-logo'
-import metascraperTitle from 'metascraper-title'
-import metascraperUrl from 'metascraper-url'
+import metascraper from "metascraper";
+import metascraperDescription from "metascraper-description";
+import metascraperImage from "metascraper-image";
+import metascraperLogo from "metascraper-logo";
+import metascraperTitle from "metascraper-title";
+import metascraperUrl from "metascraper-url";
 
 const scraper = metascraper([
   metascraperDescription(),
   metascraperImage(),
   metascraperLogo(),
   metascraperTitle(),
-  metascraperUrl()
-])
+  metascraperUrl(),
+]);
 
 const CACHE_TTL = 60 * 10; // 10 minutes
 
@@ -75,7 +76,10 @@ async function getTitleMetadata(currentTitle: string | null, page: any) {
   return ogTitle || pageTitle || null;
 }
 
-async function getDescriptionMetadata(currentDescription: string | null, page: any) {
+async function getDescriptionMetadata(
+  currentDescription: string | null,
+  page: any
+) {
   if (currentDescription) return currentDescription;
   const ogDesc = await page
     .locator('meta[property="og:description"]')
@@ -130,4 +134,5 @@ serve({
 
 console.log("✅ Server running at http://localhost:3001");
 
+export const GET = handle(app);
 export default app;
