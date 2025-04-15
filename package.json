@@ -2,8 +2,9 @@
   "name": "scraper-service",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch index.ts",
-    "start": "node index.js",
+    "dev": "tsx src/index.ts",
+    "build": "tsup",
+    "start": "node dist/index.js",
     "postinstall": "playwright install chromium"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
+    "tsup": "^8.4.0",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"
   },
